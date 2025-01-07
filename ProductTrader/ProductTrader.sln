@@ -5,6 +5,10 @@ VisualStudioVersion = 17.12.35506.116 d17.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductTrader.Logic", "ProductTrader.Logic\ProductTrader.Logic.csproj", "{D67B45EA-671F-4093-BA5D-8BE2BEE1F504}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductTrader.ConApp", "ProductTrader.ConApp\ProductTrader.ConApp.csproj", "{F64B65A4-1C9E-4E97-9DDC-C7BDE00E2B7C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Files", "Solution Files", "{ABC24650-4297-49D1-A901-78622B931D4C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,10 @@ Global
 		{D67B45EA-671F-4093-BA5D-8BE2BEE1F504}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D67B45EA-671F-4093-BA5D-8BE2BEE1F504}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D67B45EA-671F-4093-BA5D-8BE2BEE1F504}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F64B65A4-1C9E-4E97-9DDC-C7BDE00E2B7C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F64B65A4-1C9E-4E97-9DDC-C7BDE00E2B7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F64B65A4-1C9E-4E97-9DDC-C7BDE00E2B7C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F64B65A4-1C9E-4E97-9DDC-C7BDE00E2B7C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
