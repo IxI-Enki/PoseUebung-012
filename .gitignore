@@ -1,0 +1,9 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs
+/ProductTrader/.vs/ProductTrader/v17
+/ProductTrader/.vs/ProductTrader/FileContentIndex
+/ProductTrader/ProductTrader.Logic/obj
+/ProductTrader/ProductTrader.ConApp/obj
