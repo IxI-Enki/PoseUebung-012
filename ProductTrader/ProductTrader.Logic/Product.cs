@@ -61,8 +61,10 @@ public class Product : IProduct
                         valueChange = CalculateChangedValue(RANDOM.Next(0 , 50) / 1000.0);
                         Value += valueChange;
 
-                        if (Value < MinValue) MinValue = Value;
-                        else if (Value > MaxValue) MaxValue = Value;
+                        if (Value < MinValue)
+                                MinValue = Value;
+                        else if (Value > MaxValue)
+                                MaxValue = Value;
 
                         Changed?.Invoke(this , new ProductEventArgs(Name , Value , MinValue , MaxValue));
                 }
@@ -73,8 +75,10 @@ public class Product : IProduct
                 int plusOrMinus = RANDOM.Next(0 , 2);
                 double result;
 
-                if (plusOrMinus == 0) result = Value * valueChange * -1.0;
-                else result = Value * valueChange;
+                if (plusOrMinus == 0)
+                        result = Value * valueChange * -1.0;
+                else
+                        result = Value * valueChange;
 
                 return result;
         }
@@ -83,7 +87,6 @@ public class Product : IProduct
         #endregion
 
         #region OVERRIDES
-        public override string ToString()
-                => $"{Name,-20} {Value,10:f} EUR {MinValue,10:f} EUR {MaxValue,10:f} EUR Time:{(DateTime.UtcNow - _startTime).TotalSeconds:f} sec";
+        public override string ToString() => $"{Name,-20} {Value,10:f} EUR {MinValue,10:f} EUR {MaxValue,10:f} EUR Time:{(DateTime.UtcNow - _startTime).TotalSeconds:f} sec";
         #endregion
 }

@@ -9,18 +9,10 @@ public class Trader : ITrader
 
         #region PROPERTIES
         public string Name { get; }
-        public double PurchaseValue { get; private set; }
-        public double PastProfit
-        {
-                get;
-                private set;
-        }
-        public double CurrentProfit
-        {
-                get;
-                private set;
-        }
+        public double PastProfit { get; private set; }
         public double RetailValue { get; private set; }
+        public double CurrentProfit { get; private set; }
+        public double PurchaseValue { get; private set; }
         #endregion
 
         #region CONSTRUCTORS
@@ -38,41 +30,50 @@ public class Trader : ITrader
                 if (e is ProductEventArgs product)
                 {
                         if (_hasBought && product.Value >= RetailValue)
-                        {
-                                PastProfit += product.Value - _buyValue;
-                                _hasBought = false;
-                                _buyValue = 0.0;
-                                CurrentProfit = PastProfit;
-                        }
+                                Sell(product);
                         else if (_hasBought == false && product.Value >= PurchaseValue)
-                        {
-                                _hasBought = true;
-                                _buyValue = product.Value;
-                                CurrentProfit = PastProfit;
-                        }
+                                Hold(product);
                         else
-                        {
-                                CurrentProfit = PastProfit;
-                                CurrentProfit += _hasBought ? _buyValue - product.Value : 0;
-                        }
+                                Buy(product);
 
-
-                        if (CurrentProfit > 0)
-                                Console.ForegroundColor = ConsoleColor.Green;
-                        else if (CurrentProfit < 0)
-                                Console.ForegroundColor = ConsoleColor.Red;
-
-                        Console.WriteLine($"{this}");
-                        Console.ForegroundColor = ConsoleColor.White;
+                        PrintProfit();
                 }
         }
 
+        private void PrintProfit()
+        {
+                if (CurrentProfit > 0)
+                        Console.ForegroundColor = ConsoleColor.Green;
+                else if (CurrentProfit < 0)
+                        Console.ForegroundColor = ConsoleColor.Red;
+
+                Console.WriteLine($"{this}");
+                Console.ForegroundColor = ConsoleColor.White;
+        }
+
+        private void Buy(ProductEventArgs product)
+        {
+                CurrentProfit = PastProfit;
+                CurrentProfit += _hasBought ? _buyValue - product.Value : 0;
+        }
+
+        private void Hold(ProductEventArgs product)
+        {
+                _hasBought = true;
+                _buyValue = product.Value;
+                CurrentProfit = PastProfit;
+        }
+
+        private void Sell(ProductEventArgs product)
+        {
+                PastProfit += product.Value - _buyValue;
+                _hasBought = false;
+                _buyValue = 0.0;
+                CurrentProfit = PastProfit;
+        }
         #endregion
 
         #region OVERRIDES
-        public override string ToString()
-        {
-                return $"{Name,-20} {CurrentProfit,10:f} EUR {PurchaseValue,10:f} EUR {RetailValue,10:f} EUR";
-        }
+        public override string ToString() => $"{Name,-20} {CurrentProfit,10:f} EUR {PurchaseValue,10:f} EUR {RetailValue,10:f} EUR";
         #endregion
 }
