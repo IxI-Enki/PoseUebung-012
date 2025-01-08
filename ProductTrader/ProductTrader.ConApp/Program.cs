@@ -5,23 +5,25 @@ internal class Program
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
-        static void Main(/*string[] args*/)
+        static void Main()
         {
                 Console.WriteLine("Product-Trader");
 
                 Product product = new("Brent Rohöl" , 68.41);
 
-                Trader trader1 = new("Gerhard" , 70 , 75);
+                Trader trader1 = new("Gerhard" , purchaseValue: 70 , retailValue: 75);
                 Trader trader2 = new("Maximilian" , 75 , 80);
                 Trader trader3 = new("Tobias" , 80 , 85);
 
                 product.Changed += PrintHeader!;
                 product.Changed += PrintProduct!;
                 product.Changed += PrintTraderHeader!;
+
                 product.Changed += trader1.UpdateProduct!;
                 product.Changed += trader2.UpdateProduct!;
                 product.Changed += trader3.UpdateProduct!;
                 product.Start();
+
                 Console.ReadLine();
                 product.Stop();
         }
