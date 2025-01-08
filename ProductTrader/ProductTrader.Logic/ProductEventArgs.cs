@@ -2,7 +2,15 @@
 
 public class ProductEventArgs : EventArgs
 {
-        #region CONSTRUCTORS
+        #region CONSTRUCTOR
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ProductEventArgs"/> class.
+        /// </summary>
+        /// <param name="name">The name of the product.</param>
+        /// <param name="value">The current value of the product.</param>
+        /// <param name="minValue">The minimum allowed value for the product.</param>
+        /// <param name="maxValue">The maximum allowed value for the product.</param>
         public ProductEventArgs(string name , double value , double minValue , double maxValue)
         {
                 Name = name;
@@ -10,12 +18,30 @@ public class ProductEventArgs : EventArgs
                 MinValue = minValue;
                 MaxValue = maxValue;
         }
+
         #endregion
 
         #region PROPERTIES
+
+        /// <summary>
+        /// Gets the name of the product.
+        /// </summary>
         public string Name { get; }
+
+        /// <summary>
+        /// Gets the current value of the product.
+        /// </summary>
         public double Value { get; }
+
+        /// <summary>
+        /// Gets the minimum allowed value for the product.
+        /// </summary>
         public double MinValue { get; }
+
+        /// <summary>
+        /// Gets the maximum allowed value for the product.
+        /// </summary>
         public double MaxValue { get; }
+
         #endregion
 }
