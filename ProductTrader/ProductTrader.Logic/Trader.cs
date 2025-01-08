@@ -55,11 +55,15 @@ public class Trader : ITrader
                                 CurrentProfit = PastProfit;
                                 CurrentProfit += _hasBought ? _buyValue - product.Value : 0;
                         }
+
+
                         if (CurrentProfit > 0)
-                        {
-                                ;
-                        }
+                                Console.ForegroundColor = ConsoleColor.Green;
+                        else if (CurrentProfit < 0)
+                                Console.ForegroundColor = ConsoleColor.Red;
+
                         Console.WriteLine($"{this}");
+                        Console.ForegroundColor = ConsoleColor.White;
                 }
         }
 
