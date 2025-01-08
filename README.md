@@ -2,6 +2,16 @@
 
 ## ProductTrader
 
+- My Example Output:
+  
+<div align="center">
+
+    <img src="/img/my-output.png" alt="Example Output" width=80%>
+
+</div>
+
+---
+
 **Lehrziele**
 
 - Wie eine einfache Klassenstruktur aufgebaut wird (Vertiefung).
