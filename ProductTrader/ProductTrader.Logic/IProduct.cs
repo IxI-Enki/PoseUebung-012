@@ -1,7 +1,8 @@
-﻿namespace ProductTrader.Logic
+﻿namespace ProductTrader.Logic;
+
+public interface IProduct
 {
-    public interface IProduct
-    {
+        #region PROPERTIES
         /// <summary>
         /// Gets the name of the stock.
         /// </summary>
@@ -18,12 +19,16 @@
         /// Returns the minimum value the stock has had.
         /// </summary>
         double MinValue { get; }
+        #endregion
 
+        #region EVENTS
         /// <summary>
         /// Fired when the value of the stock has changed.
         /// </summary>
         event EventHandler? Changed;
+        #endregion
 
+        #region METHODS
         /// <summary>
         /// Starts the simulation.
         /// </summary>
@@ -32,5 +37,5 @@
         /// Stops the simulation.
         /// </summary>
         void Stop();
-    }
+        #endregion
 }

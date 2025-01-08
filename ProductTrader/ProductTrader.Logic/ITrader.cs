@@ -1,7 +1,8 @@
-﻿namespace ProductTrader.Logic
+﻿namespace ProductTrader.Logic;
+
+public interface ITrader
 {
-    public interface ITrader
-    {
+        #region PROPERTIES
         /// <summary>
         /// Returns the current profit.
         /// </summary>
@@ -22,12 +23,14 @@
         /// Gets the retail value.
         /// </summary>
         double RetailValue { get; }
+        #endregion
 
+        #region METHODS
         /// <summary>
         /// Registration method for the share.
         /// </summary>
         /// <param name="sender">The share.</param>
         /// <param name="eventArgs">Not in used.</param>
-        void UpdateProduct(object sender, EventArgs eventArgs);
-    }
+        void UpdateProduct(object sender , EventArgs eventArgs);
+        #endregion
 }
