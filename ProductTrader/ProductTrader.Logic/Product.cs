@@ -157,7 +157,7 @@ public class Product : IProduct
         /// Returns a string representation of the Product object.
         /// </summary>
         /// <returns>A string containing the product's name, current value, minimum value, maximum value, and the elapsed time since the simulation started.</returns>
-        public override string ToString() => $"{Name,-20} {Value,10:f} EUR {MinValue,10:f} EUR {MaxValue,10:f} EUR Time:{(DateTime.UtcNow - _startTime).TotalSeconds:f} sec";
+        public override string ToString() => $"{Name,-20} {Value,10:f}€ {MinValue,10:f}€ {MaxValue,10:f}€  Time:{(DateTime.UtcNow - _startTime).TotalSeconds:f} sec";
       
         #endregion
 }

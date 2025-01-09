@@ -7,6 +7,8 @@ internal class Program
         /// </summary>
         static void Main()
         {
+                Console.OutputEncoding = Encoding.UTF8;
+
                 Console.WriteLine("Product-Trader");
 
                 Product product = new("Brent Rohöl" , 68.41);
@@ -54,7 +56,7 @@ internal class Program
                         Console.ForegroundColor = ConsoleColor.Green;
                         Console.WriteLine($"{"Product",-20} {"CurrentValue",14} {"MinValue",14} {"MaxValue",14}");
                         Console.ForegroundColor = saveColor;
-                        Console.WriteLine($"{product.Name,-20} {product.Value,10:f} EUR {product.MinValue,10:f} EUR {product.MaxValue,10:f} EUR");
+                        Console.WriteLine($"{product.Name,-20} {product.Value,13:f}€ {product.MinValue,13:f}€ {product.MaxValue,13:f}€");
                         Console.WriteLine();
                 }
         }

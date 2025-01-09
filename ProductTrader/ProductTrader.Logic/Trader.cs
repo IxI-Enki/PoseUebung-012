@@ -139,7 +139,7 @@ public class Trader : ITrader
         /// Returns a string representation of the Trader object.
         /// </summary>
         /// <returns>A string containing the trader's name, current profit, purchase value, and retail value.</returns>
-        public override string ToString() => $"{Name,-20} {CurrentProfit,10:f} EUR {PurchaseValue,10:f} EUR {RetailValue,10:f} EUR";
+        public override string ToString() => $"{Name,-20} {CurrentProfit,13:f}€ {PurchaseValue,13:f}€ {RetailValue,13:f}€";
 
         #endregion
 }

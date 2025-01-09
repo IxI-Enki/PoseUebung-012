@@ -3,6 +3,7 @@
 public interface IProduct
 {
         #region PROPERTIES
+
         /// <summary>
         /// Gets the name of the stock.
         /// </summary>
@@ -19,16 +20,20 @@ public interface IProduct
         /// Returns the minimum value the stock has had.
         /// </summary>
         double MinValue { get; }
+
         #endregion
 
         #region EVENTS
+
         /// <summary>
         /// Fired when the value of the stock has changed.
         /// </summary>
         event EventHandler? Changed;
+
         #endregion
 
         #region METHODS
+
         /// <summary>
         /// Starts the simulation.
         /// </summary>
@@ -37,5 +42,6 @@ public interface IProduct
         /// Stops the simulation.
         /// </summary>
         void Stop();
+
         #endregion
 }
