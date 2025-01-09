@@ -22,8 +22,8 @@ internal class Program
                 product.Changed += trader1.UpdateProduct!;
                 product.Changed += trader2.UpdateProduct!;
                 product.Changed += trader3.UpdateProduct!;
-                product.Start();
 
+                product.Start();
                 Console.ReadLine();
                 product.Stop();
         }

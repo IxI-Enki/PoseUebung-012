@@ -7,7 +7,7 @@ public class Product : IProduct
         /// <summary>
         /// The update interval in milliseconds for the product value simulation.
         /// </summary>
-        private const int UPDATETIME = 50; // Milliseconds
+        private const int UPDATETIME = 200; // Milliseconds
 
         /// <summary>
         /// A static random number generator for product value fluctuations. 
@@ -72,7 +72,6 @@ public class Product : IProduct
         /// </summary>
         /// <param name="name">The name of the product.</param>
         /// <param name="startValue">The initial value of the product. Must be non-negative.</param>
-        /// <exception cref="ArgumentException">Thrown if the startValue is negative.</exception>
         public Product(string name , double startValue)
         {
                 Name = name;
