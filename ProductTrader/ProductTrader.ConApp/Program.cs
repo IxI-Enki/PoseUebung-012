@@ -5,17 +5,17 @@ internal class Program
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
-        static void Main()
+        static void Main( )
         {
                 Console.OutputEncoding = Encoding.UTF8;
 
-                Console.WriteLine("Product-Trader");
+                Console.WriteLine( "Product-Trader" );
 
-                Product product = new("Brent Rohöl" , 68.41);
+                Product product = new( "Brent Rohöl" , 68.41 );
 
-                Trader trader1 = new("Gerhard" , purchaseValue: 70 , retailValue: 75);
-                Trader trader2 = new("Maximilian" , 75 , 80);
-                Trader trader3 = new("Tobias" , 80 , 85);
+                Trader trader1 = new( "Gerhard" , purchaseValue: 70 , retailValue: 75 );
+                Trader trader2 = new( "Maximilian" , 75 , 80 );
+                Trader trader3 = new( "Tobias" , 80 , 85 );
 
                 product.Changed += PrintHeader!;
                 product.Changed += PrintProduct!;
@@ -25,9 +25,9 @@ internal class Program
                 product.Changed += trader2.UpdateProduct!;
                 product.Changed += trader3.UpdateProduct!;
 
-                product.Start();
-                Console.ReadLine();
-                product.Stop();
+                product.Start( );
+                Console.ReadLine( );
+                product.Stop( );
         }
 
         /// <summary>
@@ -35,11 +35,11 @@ internal class Program
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The event data.</param>
-        static void PrintHeader(object sender , EventArgs e)
+        static void PrintHeader( object sender , EventArgs e )
         {
-                Console.Clear();
-                Console.WriteLine("Product-Trader");
-                Console.WriteLine();
+                Console.Clear( );
+                Console.WriteLine( "Product-Trader" );
+                Console.WriteLine( );
         }
 
         /// <summary>
@@ -47,17 +47,17 @@ internal class Program
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The event data.</param>
-        static void PrintProduct(object sender , EventArgs e)
+        static void PrintProduct( object sender , EventArgs e )
         {
-                if (e is ProductEventArgs product)
+                if( e is ProductEventArgs product )
                 {
                         ConsoleColor saveColor = Console.ForegroundColor;
 
                         Console.ForegroundColor = ConsoleColor.Green;
-                        Console.WriteLine($"{"Product",-20} {"CurrentValue",14} {"MinValue",14} {"MaxValue",14}");
+                        Console.WriteLine( $"{"Product",-20} {"CurrentValue",14} {"MinValue",14} {"MaxValue",14}" );
                         Console.ForegroundColor = saveColor;
-                        Console.WriteLine($"{product.Name,-20} {product.Value,13:f}€ {product.MinValue,13:f}€ {product.MaxValue,13:f}€");
-                        Console.WriteLine();
+                        Console.WriteLine( $"{product.Name,-20} {product.Value,13:f}€ {product.MinValue,13:f}€ {product.MaxValue,13:f}€" );
+                        Console.WriteLine( );
                 }
         }
 
@@ -66,14 +66,14 @@ internal class Program
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The event data.</param>
-        static void PrintTraderHeader(object sender , EventArgs e)
+        static void PrintTraderHeader( object sender , EventArgs e )
         {
-                if (e is ProductEventArgs product)
+                if( e is ProductEventArgs product )
                 {
                         ConsoleColor saveColor = Console.ForegroundColor;
 
                         Console.ForegroundColor = ConsoleColor.Green;
-                        Console.WriteLine($"{nameof(Trader),-20} {nameof(Trader.CurrentProfit),14} {nameof(Trader.PurchaseValue),14} {nameof(Trader.RetailValue),14}");
+                        Console.WriteLine( $"{nameof( Trader ),-20} {nameof( Trader.CurrentProfit ),14} {nameof( Trader.PurchaseValue ),14} {nameof( Trader.RetailValue ),14}" );
                         Console.ForegroundColor = saveColor;
                 }
         }

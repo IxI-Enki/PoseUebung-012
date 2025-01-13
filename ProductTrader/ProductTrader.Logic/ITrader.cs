@@ -34,7 +34,7 @@ public interface ITrader
         /// </summary>
         /// <param name="sender">The share.</param>
         /// <param name="eventArgs">Not in used.</param>
-        void UpdateProduct(object sender , EventArgs eventArgs);
+        void UpdateProduct( object sender , EventArgs eventArgs );
 
         #endregion
 }

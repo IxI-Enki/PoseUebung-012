@@ -53,7 +53,7 @@ public class Trader : ITrader
         /// <param name="name">The name of the trader.</param>
         /// <param name="purchaseValue">The initial purchase value of the product.</param>
         /// <param name="retailValue">The retail value of the product.</param>
-        public Trader(string name , double purchaseValue , double retailValue)
+        public Trader( string name , double purchaseValue , double retailValue )
         {
                 Name = name;
                 PurchaseValue = purchaseValue;
@@ -69,66 +69,76 @@ public class Trader : ITrader
         /// </summary>
         /// <param name="sender">The object that sent the event.</param>
         /// <param name="e">The event arguments containing the product information.</param>
-        public void UpdateProduct(object sender , EventArgs e)
+        public void UpdateProduct( object sender , EventArgs e )
         {
-                if (e is ProductEventArgs product)
+                if( e is ProductEventArgs product )
                 {
-                        if (_hasBought && product.Value >= RetailValue)
-                                Sell(product);
-                        else if (_hasBought == false && product.Value >= PurchaseValue)
-                                Hold(product);
+                        if( _hasBought && product.Value >= RetailValue )
+                                SellProduct( product );
+                        else if( !_hasBought && product.Value <= PurchaseValue )
+                                BuyProduct( product );
                         else
-                                Buy(product);
+                                CalculateProfit( product );
 
-                        PrintProfit();
+                        PrintProfit( );
                 }
         }
 
         /// <summary>
         /// Prints the current profit of the trader, colored green for positive profit, red for negative profit, and white otherwise.
         /// </summary>
-        private void PrintProfit()
+        private void PrintProfit( )
         {
-                if (CurrentProfit > 0)
+                if( CurrentProfit > 0 )
                         Console.ForegroundColor = ConsoleColor.Green;
-                else if (CurrentProfit < 0)
+                else if( CurrentProfit < 0 )
                         Console.ForegroundColor = ConsoleColor.Red;
 
-                Console.WriteLine($"{this}");
+                Console.WriteLine( $"{this}" );
                 Console.ForegroundColor = ConsoleColor.White;
-        }
-
-        /// <summary>
-        /// Simulates buying a product. Updates the trader's state accordingly.
-        /// </summary>
-        /// <param name="product">The product information received in the event arguments.</param>
-        private void Buy(ProductEventArgs product)
-        {
-                CurrentProfit = PastProfit;
-                CurrentProfit += _hasBought ? _buyValue - product.Value : 0;
-        }
-
-        /// <summary>
-        /// Simulates holding a product. Updates the trader's state accordingly.
-        /// </summary>
-        /// <param name="product">The product information received in the event arguments.</param>
-        private void Hold(ProductEventArgs product)
-        {
-                _hasBought = true;
-                _buyValue = product.Value;
-                CurrentProfit = PastProfit;
         }
 
         /// <summary>
         /// Simulates selling a product. Updates the trader's state accordingly.
         /// </summary>
         /// <param name="product">The product information received in the event arguments.</param>
-        private void Sell(ProductEventArgs product)
+        private void SellProduct( ProductEventArgs product )
         {
+                Reset( );
+
                 PastProfit += product.Value - _buyValue;
-                _hasBought = false;
-                _buyValue = 0.0;
                 CurrentProfit = PastProfit;
+
+                // Resets the trader's state.
+                void Reset( )
+                {
+                        _hasBought = false;
+                        _buyValue = 0.0;
+                }
+        }
+
+        /// <summary>
+        /// Simulates holding a product. Updates the trader's state accordingly.
+        /// </summary>
+        /// <param name="product">The product information received in the event arguments.</param>
+        private void BuyProduct( ProductEventArgs product )
+        {
+                Buy( );
+
+                _buyValue = product.Value;
+                CurrentProfit = PastProfit;
+
+                void Buy( ) => _hasBought = true;
+        }
+
+        /// <summary>
+        /// Simulates buying a product. Updates the trader's state accordingly.
+        /// </summary>
+        /// <param name="product">The product information received in the event arguments.</param>
+        private void CalculateProfit( ProductEventArgs product )
+        {
+                CurrentProfit = PastProfit;
+                CurrentProfit += _hasBought ? _buyValue - product.Value : 0;
         }
 
         #endregion
@@ -139,7 +149,7 @@ public class Trader : ITrader
         /// Returns a string representation of the Trader object.
         /// </summary>
         /// <returns>A string containing the trader's name, current profit, purchase value, and retail value.</returns>
-        public override string ToString() => $"{Name,-20} {CurrentProfit,13:f}€ {PurchaseValue,13:f}€ {RetailValue,13:f}€";
+        public override string ToString( ) => $"{Name,-20} {CurrentProfit,13:f}€ {PurchaseValue,13:f}€ {RetailValue,13:f}€";
 
         #endregion
 }

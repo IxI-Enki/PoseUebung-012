@@ -37,11 +37,11 @@ public interface IProduct
         /// <summary>
         /// Starts the simulation.
         /// </summary>
-        void Start();
+        void Start( );
         /// <summary>
         /// Stops the simulation.
         /// </summary>
-        void Stop();
+        void Stop( );
 
         #endregion
 }
